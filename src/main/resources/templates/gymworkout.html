@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Gym Workout</title>
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="text-center">Gym Workout Exercises</h1>
+  <table class="table mt-3">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Body Part</th>
+      <th>Equipment</th>
+      <th>Instructions</th>
+      <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="exercise : ${exercises}">
+      <td th:text="${exercise.id}"></td>
+      <td th:text="${exercise.name}"></td>
+      <td th:text="${exercise.bodyPart}"></td>
+      <td th:text="${exercise.equipment}"></td>
+      <td>
+        <ul th:each="instruction : ${exercise.instructions}">
+          <li th:text="${instruction}"></li>
+        </ul>
+      </td>
+      <td>
+<!--        <img th:src="${exercise.gifUrl}" class="img-original-size"/>-->
+        <a th:href="${exercise.gifUrl}" target="_blank">
+          Enlace a la imagen
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
